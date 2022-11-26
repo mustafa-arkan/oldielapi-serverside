@@ -35,8 +35,20 @@ async function run(){
 
 try{
 
+    const productCollection=client.db('oldlaptop').collection('productsCategories')
 
 
+    // app.get('/productsCategories',async(req,res)=>{
+    //     const query={}
+    //     const cursor=productCollection.find(query)
+    //     const products=await cursor.toArray()
+    //     res.send(products)
+    //     })
+
+
+        
+
+    
 
 
 }
@@ -47,7 +59,7 @@ finally{
 
 
 
-    
+
 }
 
 
