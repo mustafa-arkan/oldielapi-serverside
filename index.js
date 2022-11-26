@@ -1,15 +1,17 @@
-const express=require('express')
-const app=express()
-const cors=require('cors')
- require('dotenv').config()
-const port=process.env.PORT||5000
+const express = require('express');
+const cors = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const { query } = require('express');
+require('dotenv').config();
+const port = process.env.PORT || 5000;
+
+const app = express();
+
+//Middlewares
+app.use(cors());
+app.use(express.json());
 
 
-app.use(cors())
-app.use(express.json())
-
-/////////////////
 
 
 
@@ -29,23 +31,35 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 
-//////////
+
 
 async function run(){
 
 try{
 
-    const productCollection=client.db('oldlaptop').collection('productsCategories')
+   
 
 
-    // app.get('/productsCategories',async(req,res)=>{
-    //     const query={}
-    //     const cursor=productCollection.find(query)
-    //     const products=await cursor.toArray()
-    //     res.send(products)
-    //     })
+    
 
+    const brandsCollection = client.db('oldlaptop').collection('brands');
+    const phoneCollection = client.db('oldlaptop').collection('allPhones');
 
+    app.get('/brands', async (req, res) => {
+      const query = {};
+      const brands = await brandsCollection.find(query).toArray();
+      res.send(brands);
+    });
+
+    app.get('/brands/:brand', async (req, res) => {
+      const query = req.params.brand;
+
+      const filter = {
+        brand: query,
+      };
+      const result = await phoneCollection.find(filter).toArray();
+      res.send(result);
+    });
         
 
     
@@ -79,7 +93,7 @@ run().catch(err=>console.error(err))
 
 
 
-/////////////////
+// /////////////////
 app.get('/',(req,res)=>{
 
 res.send('social app  node server !!!')
@@ -92,3 +106,5 @@ app.listen(port,()=>{
 console.log(`server running on port: ${port}`)
 
 })
+
+
