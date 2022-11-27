@@ -14,11 +14,6 @@ app.use(express.json());
 
 
 
-
-
-
-
-
 // console.log(process.env.DB_USER)
 // console.log(process.env.DB_PASS)
 
@@ -43,7 +38,8 @@ try{
     
 
     const brandsCollection = client.db('oldlaptop').collection('brands');
-    const phoneCollection = client.db('oldlaptop').collection('allPhones');
+    
+    const laptopCollection = client.db('oldlaptop').collection('products');
 
     app.get('/brands', async (req, res) => {
       const query = {};
@@ -57,7 +53,7 @@ try{
       const filter = {
         brand: query,
       };
-      const result = await phoneCollection.find(filter).toArray();
+      const result = await laptopCollection.find(filter).toArray();
       res.send(result);
     });
         

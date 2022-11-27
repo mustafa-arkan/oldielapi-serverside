@@ -1,7 +1,30 @@
 [
-    {"brand":"Dell"},
-    {"brand": "Hp"},
-    {"brand":"Lenovo"},
-    {"brand":"Asus"}
+    {
+        
+        "brand":"Dell",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSppXIQ1g5WxK0V5dMs7uIfS_Sh7aAB2lumUw&usqp=CAU"
+    
+    
+    },
+    {
+        "brand": "Hp",
+        "image":"https://w0.peakpx.com/wallpaper/98/560/HD-wallpaper-hp-green-logo-green-neon-lights-creative-hewlett-packard-logo-green-abstract-background-hp-logo-hewlett-packard-hp.jpg"
+    
+    
+    },
+    {
+        "brand":"Lenovo",
+        "image":"https://ak.picdn.net/shutterstock/videos/1067146834/thumb/12.jpg?ip=x480"
+    
+    
+    },
+
+    {
+        "brand":"Asus",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ89QytGBaECJQ4vyEmsBVDFH8VPa9vv425g&usqp=CAU"
+    
+    
+    
+    }
     
     ]
