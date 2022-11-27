@@ -1,3 +1,6 @@
+
+
+
 const express = require('express');
 const cors = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -99,13 +102,42 @@ app.post('/users', async (req, res) => {
 ////////end of users api//////
 
 
-
+//////make admin api start/////
     
 
 
 
 
+app.put('/users/admin/:id', async (req, res) => {
 
+  const id=req.params.id
+
+
+  // var ObjectId = require('mongodb').ObjectID;
+
+  
+  const filter = { _id: require('mongodb').ObjectId(id) }
+
+  // const id=parseInt(req.params.id) 
+  // const filter = { _id: ObjectId(id) }
+  const options = { upsert: true };
+  const updatedDoc = {
+      $set: {
+          role: 'admin'
+      }
+  }
+  const result = await usersCollection.updateOne(filter, updatedDoc, options);
+  res.send(result);
+})
+
+
+
+
+
+
+
+
+//////end of admin api/////
 
 
 
