@@ -41,6 +41,17 @@ try{
     
     const laptopCollection = client.db('oldlaptop').collection('products');
 
+    //const allsellersCollection = client.db('oldlaptop').collection('allsellers');
+
+    const usersCollection = client.db('oldlaptop').collection('users');
+
+
+
+
+
+
+
+
     app.get('/brands', async (req, res) => {
       const query = {};
       const brands = await brandsCollection.find(query).toArray();
@@ -57,8 +68,54 @@ try{
       res.send(result);
     });
         
+///////////category end///////
+
+////////users api start////////
+
+app.get('/users', async (req, res) => {
+  const query = {};
+  const users = await usersCollection.find(query).toArray();
+  res.send(users);
+});
+
+
+
+
+
+
+app.post('/users', async (req, res) => {
+  const user = req.body;
+  console.log(user);
+  const result = await usersCollection.insertOne(user);
+  res.send(result);
+});
+
+
+
+
+
+
+
+////////end of users api//////
+
+
 
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
