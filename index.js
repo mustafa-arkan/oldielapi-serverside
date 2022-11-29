@@ -50,6 +50,10 @@ try{
 
 
 
+    const productsCollection=client.db('oldlaptop').collection('product')
+
+
+
 
 
 
@@ -82,14 +86,6 @@ app.get('/users', async (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
 app.get('/users/admin/:email', async (req, res) => {
   const email = req.params.email;
   const query = { email }
@@ -103,12 +99,21 @@ app.get('/users/admin/:email', async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+
 app.post('/users', async (req, res) => {
   const user = req.body;
   console.log(user);
   const result = await usersCollection.insertOne(user);
   res.send(result);
 });
+
 
 
 
@@ -162,15 +167,22 @@ app.put('/users/admin/:id', async (req, res) => {
 
 
 
-
 //////end of admin api/////
 
 
 
 
+app.post('/addproducts',async (req, res) => {
+  const product = req.body;
+  const result = await productsCollection.insertOne(product);
+  res.send(result);
+});
 
-
-
+app.get('/addproducts', async (req, res) => {
+  const query = {};
+  const users = await productsCollection.find(query).toArray();
+  res.send(users);
+});
 
 
 
