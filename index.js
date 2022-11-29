@@ -1,6 +1,4 @@
 
-
-
 const express = require('express');
 const cors = require('cors');
 const { MongoClient, ServerApiVersion } = require('mongodb');
@@ -15,8 +13,6 @@ app.use(cors());
 app.use(express.json());
 
 
-
-
 // console.log(process.env.DB_USER)
 // console.log(process.env.DB_PASS)
 
@@ -28,18 +24,11 @@ const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster
 //console.log(uri)
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
-
-
-
 async function run(){
 
 try{
 
    
-
-
-    
-
     const brandsCollection = client.db('oldlaptop').collection('brands');
     
     const laptopCollection = client.db('oldlaptop').collection('products');
@@ -51,12 +40,6 @@ try{
 
 
     const productsCollection=client.db('oldlaptop').collection('product')
-
-
-
-
-
-
 
 
     app.get('/brands', async (req, res) => {
@@ -95,18 +78,6 @@ app.get('/users/admin/:email', async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 app.post('/users', async (req, res) => {
   const user = req.body;
   console.log(user);
@@ -116,26 +87,7 @@ app.post('/users', async (req, res) => {
 
 
 
-
-
-
-
-
 ////////end of users api//////
-
-
-//////make admin api start/////
-    
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -161,16 +113,7 @@ app.put('/users/admin/:id', async (req, res) => {
   res.send(result);
 })
 
-
-
-
-
-
-
 //////end of admin api/////
-
-
-
 
 app.post('/addproducts',async (req, res) => {
   const product = req.body;
@@ -185,23 +128,12 @@ app.get('/addproducts', async (req, res) => {
 });
 
 
-
-
-
 }
 
 finally{
 
 
-
-
-
-
 }
-
-
-
-
 
 }
 
@@ -211,12 +143,6 @@ run().catch(err=>console.error(err))
 
 
 
-
-
-
-
-
-// /////////////////
 app.get('/',(req,res)=>{
 
 res.send('social app  node server !!!')
