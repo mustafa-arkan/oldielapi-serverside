@@ -179,9 +179,9 @@ app.post('/addproducts',async (req, res) => {
 });
 
 app.get('/addproducts', async (req, res) => {
-  const query = {};
+  const query = {}
   const users = await productsCollection.find(query).toArray();
-  res.send(users);
+  res.send(users)
 });
 
 
